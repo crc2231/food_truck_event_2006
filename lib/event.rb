@@ -43,6 +43,10 @@ class Event
     items
   end
 
-
-
+  def sorted_item_list
+    item_collection = total_inventory.keys
+    item_collection.map do |item|
+      item.name
+    end.uniq.sort
+  end
 end
