@@ -30,6 +30,9 @@ class EventTest < Minitest::Test
     @food_truck3 = FoodTruck.new("Palisade Peach Shack")
 
     @food_truck3.stock(@item1, 65)
+
+    @food_truck3.stock(@item3, 10)
+
   end
 
   def test_it_exists
@@ -76,7 +79,35 @@ class EventTest < Minitest::Test
 
     assert_equal 345.00, @food_truck2.potential_revenue
 
-    assert_equal 243.75, @food_truck3.potential_revenue
+    assert_equal 296.75, @food_truck3.potential_revenue
   end
+
+  def test_total_inventory
+    skip
+    @event.add_food_truck(@food_truck1)
+
+    @event.add_food_truck(@food_truck2)
+
+    @event.add_food_truck(@food_truck3)
+
+    expected = {
+      @item1 => {quantity: 100, food_trucks: [@food_truck1, @food_truck3]},
+      @item2 => {quantity: 7, food_trucks: [@food_truck1]},
+      @item4 => {quantity: 50, food_trucks: [@foodtruck2]},
+      @item3 => {quantity: 35, food_trucks: [@food_truck2, @food_truck3]}
+                }
+
+    assert_equal expected, @event.total_inventory
+  end
+
+  # def test_overstocked_items
+  #   @event.add_food_truck(@food_truck1)
+  #
+  #   @event.add_food_truck(@food_truck2)
+  #
+  #   @event.add_food_truck(@food_truck3)
+  #
+  #   assert_equal [@item1], @event.overstocked_items
+  # end
 
 end
