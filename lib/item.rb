@@ -3,7 +3,7 @@ class Item
 
 def initialize(details)
   @name = details[:name]
-  @price = details[:price]
+  @price = details[:price].delete("$").to_f
 end
 
 end
