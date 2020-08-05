@@ -49,4 +49,20 @@ class Event
       item.name
     end.uniq.sort
   end
+
+  # def sell(item, quantity)
+  #   if total_inventory[item].nill? || total_inventory[:quantity] < quantity
+  #     return false
+  #   else
+  #     total_inventory[item][:food_trucks].each do |truck|
+  #       if truck.check_stock(item) < quantity
+  #         truck_stock = truck.check_stock(item)
+  #         truck.sell(item, truck_stock)
+  #         quantity -= truck_stock
+  #       else
+  #         truck.sell(item, quantity)
+  #       end
+  #     end
+  #   end
+  # end
 end
